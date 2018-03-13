@@ -3,8 +3,9 @@ package cucumber.examples.java.testNG;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 
 /**
  * Based on the LocalDriverFactory found at: onrationaleemotions.wordpress.com
@@ -18,6 +19,7 @@ public class LocalDriverFactory {
 
         switch (Browser.valueOf(browserName.toUpperCase())) {
             case FIREFOX:
+            	FirefoxDriverManager.getInstance().setup();
                 driver = new FirefoxDriver();
                 break;
             case IE:
@@ -27,12 +29,12 @@ public class LocalDriverFactory {
                 System.setProperty("webdriver.chrome.driver", "binaries/linux/googlechrome/64bit/2.9/chromedriver");
                 driver = new ChromeDriver();
                 break;
-            case HTMLUNIT:
+/*            case HTMLUNIT:
                 driver = new HtmlUnitDriver();
                 break;
             case HTMLUNITJS:
                 driver = new HtmlUnitDriver(true);
-                break;
+                break;*/
             default:
                 driver = new FirefoxDriver();
                 break;

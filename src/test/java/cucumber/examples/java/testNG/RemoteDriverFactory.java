@@ -1,11 +1,11 @@
 package cucumber.examples.java.testNG;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * A factory of remote WebDrivers. Based on an example taken from:
@@ -67,11 +67,7 @@ public class RemoteDriverFactory {
             driver = new RemoteWebDriver(hubUrl, capability);
             return driver;
         }
-        if (browserName.equalsIgnoreCase("htmlUnitWithJs")) {
-            DesiredCapabilities capability = DesiredCapabilities.htmlUnitWithJs();
-            driver = new RemoteWebDriver(hubUrl, capability);
-            return driver;
-        }
+
         if (browserName.equalsIgnoreCase("ipad")) {
             DesiredCapabilities capability = DesiredCapabilities.ipad();
             driver = new RemoteWebDriver(hubUrl, capability);

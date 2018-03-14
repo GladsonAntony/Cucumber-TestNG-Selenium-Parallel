@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -58,9 +57,6 @@ public class BrowserFactory extends InitMethod
 			driver = new EdgeDriver();
 			break;
 
-		case  "unit":
-			driver = new HtmlUnitDriver();
-			break;
 
 		case  "opera":
 			capabilities = DesiredCapabilities.opera();
@@ -84,6 +80,7 @@ public class BrowserFactory extends InitMethod
 		default:
 			throw new NotFoundException("Browser Not Found. Please Provide a Valid Browser");
 		}
+		
 		if(ImplicitlyWait > 0)
 		{
 			implicitlywait(ImplicitlyWait);

@@ -22,6 +22,7 @@
 		<selenium.version>3.11.0</selenium.version>
 		<cucumber.version>2.4.0</cucumber.version>
 		<webdrivermanager.version>2.1.0</webdrivermanager.version>
+		<phantonjsdriver.version>1.4.4</phantonjsdriver.version>
 	</properties>
 
 	<dependencies>
@@ -288,7 +289,7 @@
 		</dependency>
 
 
-		<!-- AShot Maven Dependency-->
+		<!-- AShot Maven Dependency -->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
@@ -296,7 +297,7 @@
 		</dependency>
 
 
-		<!-- Selenium Shutterbag Maven Dependency-->
+		<!-- Selenium Shutterbag Maven Dependency -->
 		<dependency>
 			<groupId>com.assertthat</groupId>
 			<artifactId>selenium-shutterbug</artifactId>
@@ -304,7 +305,7 @@
 		</dependency>
 
 
-		<!--Automation Remarks TestNG Video Recorder Maven Dependency-->
+		<!--Automation Remarks TestNG Video Recorder Maven Dependency -->
 		<dependency>
 			<groupId>com.automation-remarks</groupId>
 			<artifactId>video-recorder-testng</artifactId>
@@ -312,6 +313,12 @@
 		</dependency>
 
 
+		<!-- Phantom JS Driver Maven Dependency -->
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>${phantonjsdriver.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -344,10 +351,11 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					 <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                        -Dcucumber.options="--plugin ru.yandex.qatools.allure.cucumberjvm.AllureReporter"
-                    </argLine>
+					<argLine>
+						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+						-Dcucumber.options="--plugin
+						ru.yandex.qatools.allure.cucumberjvm.AllureReporter"
+					</argLine>
 					<reuseForks>false</reuseForks>
 					<argLine>-Duser.language=en</argLine>
 					<argLine>-Xmx1024m</argLine>

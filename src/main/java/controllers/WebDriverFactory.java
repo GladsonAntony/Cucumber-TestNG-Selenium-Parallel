@@ -9,11 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
-import com.automation.remarks.video.enums.RecorderType;
-import com.automation.remarks.video.enums.RecordingMode;
-import com.automation.remarks.video.enums.VideoSaveMode;
-import com.automation.remarks.video.recorder.VideoRecorder;
-
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.EdgeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
@@ -75,37 +70,9 @@ public class WebDriverFactory extends BrowserFactory
 		new WebDriverFactory();
 		WebDriver driver = WebDriverFactory.createDriver();
 		setWebDriver(driver);
-		
-		if(VideoFeature.toLowerCase().contains("enabledfailed"))
-		{
-			setupVideoRecordingFailedOnly();
-		}
-		else if(VideoFeature.toLowerCase().contains("enabledall"))
-		{
-			setupVideoRecordingAll();
-		}
 	}
 	
-	public void setupVideoRecordingFailedOnly() throws Exception
-	{
-		VideoRecorder.conf()
-		.withVideoFolder("./src/test/resources/Videos")     					// Default is ${user.dir}/video.
-		.videoEnabled(true)                       										// Disabled video globally
-		.withVideoSaveMode(VideoSaveMode.FAILED_ONLY)     	// Save videos ONLY FAILED tests
-		.withRecorderType(RecorderType.MONTE)    						// Monte is Default recorder
-		.withRecordMode(RecordingMode.ALL)  ;							// Record video only for tests with @Video
-	}
 	
-	public void setupVideoRecordingAll() throws Exception
-	{
-		VideoRecorder.conf()
-		.withVideoFolder("./src/test/resources/Videos")     					// Default is ${user.dir}/video.
-		.videoEnabled(true)                       										// Disabled video globally
-		.withVideoSaveMode(VideoSaveMode.ALL)     						// Save videos All tests
-		.withRecorderType(RecorderType.MONTE)    						// Monte is Default recorder
-		.withRecordMode(RecordingMode.ALL)  ;							// Record video only for tests with @Video
-	}
-
 	public void setWebDriver(WebDriver driver) 
 	{
 		wd.set(driver);

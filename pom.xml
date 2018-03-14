@@ -288,6 +288,31 @@
 		</dependency>
 
 
+		<!-- AShot Maven Dependency-->
+		<dependency>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+
+
+		<!-- Selenium Shutterbag Maven Dependency-->
+		<dependency>
+			<groupId>com.assertthat</groupId>
+			<artifactId>selenium-shutterbug</artifactId>
+			<version>0.7</version>
+		</dependency>
+
+
+		<!--Automation Remarks TestNG Video Recorder Maven Dependency-->
+		<dependency>
+			<groupId>com.automation-remarks</groupId>
+			<artifactId>video-recorder-testng</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

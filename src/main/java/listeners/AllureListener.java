@@ -1,5 +1,6 @@
 package listeners;
 
+import controllers.WebDriverFactory;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -13,6 +14,8 @@ import org.testng.Reporter;
 import controllers.BaseMethod;
 import utils.AllureAttachments;
 
+import static controllers.WebDriverFactory.getWebDriver;
+
 /**
  * @Author Gladson Antony
  * @Date 25-Dec-2016
@@ -20,7 +23,6 @@ import utils.AllureAttachments;
 
 public class AllureListener extends BaseMethod implements ITestListener, ISuiteListener, IInvokedMethodListener 
 {
-
 	/*This belongs to ISuiteListener and will execute before the Suite Starts*/
 	@Override
 	public void onStart(ISuite arg0) 

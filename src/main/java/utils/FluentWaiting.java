@@ -3,6 +3,7 @@ package utils;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import controllers.WebDriverFactory;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,10 +21,12 @@ public class FluentWaiting extends BaseMethod
 {
 	public static WebDriver driver;
 
+	static WebDriverFactory webDriverFactory = new WebDriverFactory();
+
 	/*To Wait Until Element to be Clickable*/
 	public static void waitUntillElementToBeClickable(int TotalTimeInSeconds, int PollingTimeInMilliseconds, WebElement Element)
 	{
-		 FluentWait<WebDriver> ClickableWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> ClickableWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);
@@ -34,7 +37,7 @@ public class FluentWaiting extends BaseMethod
 	/*To Wait Until Element to be Selectable*/
 	public static void waitUntillElementToBeSelected(int TotalTimeInSeconds, int PollingTimeInMilliseconds, WebElement Element)
 	{
-		 FluentWait<WebDriver> SelectableWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> SelectableWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);
@@ -45,7 +48,7 @@ public class FluentWaiting extends BaseMethod
 	/*To Wait Until Element to be Visible*/
 	public static void waitUntillElementToBeVisible(int TotalTimeInSeconds, int PollingTimeInMilliseconds, WebElement Element)
 	{
-		 FluentWait<WebDriver> visibleWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> visibleWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);
@@ -56,7 +59,7 @@ public class FluentWaiting extends BaseMethod
 	/*To Wait for an Alert Window */
 	public static void waitUntillAlertWindowsPopUp(int TotalTimeInSeconds, int PollingTimeInMilliseconds)
 	{
-		 FluentWait<WebDriver> alertWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> alertWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);
@@ -67,7 +70,7 @@ public class FluentWaiting extends BaseMethod
 	/*To Wait Until Elements to be Visible*/
 	public static void waitUntillVisibilityOfElements(int TotalTimeInSeconds, int PollingTimeInMilliseconds, List<WebElement> Elements)
 	{
-		 FluentWait<WebDriver> visibleWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> visibleWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);
@@ -78,7 +81,7 @@ public class FluentWaiting extends BaseMethod
 	/*To Wait Until Web-Page Title to be Visible*/
 	public static void waitForTitleToBe(int TotalTimeInSeconds, int PollingTimeInMilliseconds, String PageTitle)
 	{
-		 FluentWait<WebDriver> titleWait = new FluentWait<WebDriver>(getWebDriver())
+		 FluentWait<WebDriver> titleWait = new FluentWait<WebDriver>(webDriverFactory.getWebDriver())
 		            .withTimeout(TotalTimeInSeconds, TimeUnit.SECONDS)
 		            .pollingEvery(PollingTimeInMilliseconds, TimeUnit.MILLISECONDS)
 		            .ignoring(NoSuchElementException.class);

@@ -3,6 +3,7 @@
  */
 package controllers;
 
+import cucumber.api.java.Before;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -25,9 +26,13 @@ public class WebDriverFactory extends BrowserFactory
 	public static String browser;
 	public static String url;
 
-	@BeforeTest(alwaysRun=true)
+
+	@Before
+	//@BeforeTest(alwaysRun=true)
 	public void suiteSetup() throws Exception
 	{
+		System.out.println("Browser: "+Browser);
+		System.out.println("WebsiteURL: "+WebsiteURL);
 		switch(Browser.toLowerCase())
 		{
 		case "chrome":
@@ -60,6 +65,9 @@ public class WebDriverFactory extends BrowserFactory
 		default:
 			throw new NotFoundException("Browser Not Found. Please Provide a Valid Browser");
 		}
+		new WebDriverFactory();
+		WebDriver driver = WebDriverFactory.createDriver();
+		setWebDriver(driver);
 	}
 
 	@BeforeMethod
@@ -73,7 +81,7 @@ public class WebDriverFactory extends BrowserFactory
 	}
 	
 	
-	public void setWebDriver(WebDriver driver) 
+	public static void setWebDriver(WebDriver driver)
 	{
 		wd.set(driver);
 	}

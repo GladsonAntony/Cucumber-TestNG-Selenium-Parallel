@@ -27,15 +27,15 @@ import utils.EnvironmentSetup;
  * @Author Gladson Antony
  * @Date 28-Jan-2017
  */
-public class BaseMethod extends WebDriverFactory
+public class BaseMethod //extends WebDriverFactory
 {
-	@AfterTest
+	/*@AfterTest
 	public void beforeSuite() throws Exception
 	{
 		EnvironmentSetup.environmentSetup();
 	}
 	
-	/* To get the Website Name */
+	*//* To get the Website Name *//*
 	public String getUrlTitle() throws Exception 
 	{
 		URL aURL = new URL(WebsiteURL);
@@ -45,7 +45,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Press ENTER Key using Robot */
+	*//* To Press ENTER Key using Robot *//*
 	public void hitEnter() throws Exception 
 	{
 		re = new Robot();
@@ -54,7 +54,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Press BACKSPACE Key using Robot */
+	*//* To Press BACKSPACE Key using Robot *//*
 	public void hitBackspace() throws Exception 
 	{
 		re = new Robot();
@@ -63,7 +63,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Press DELETE Key using Robot */
+	*//* To Press DELETE Key using Robot *//*
 	public void hitDelete() throws Exception 
 	{
 		re = new Robot();
@@ -72,7 +72,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Select all the Text/Web Elements using ROBOT */
+	*//* To Select all the Text/Web Elements using ROBOT *//*
 	public void selectAll() throws Exception
 	{
 		re = new Robot();
@@ -83,7 +83,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Copy all the Selected Text/Web Elements using ROBOT */
+	*//* To Copy all the Selected Text/Web Elements using ROBOT *//*
 	public void copyAll() throws Exception 
 	{
 		re = new Robot();
@@ -94,7 +94,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Paste all the Selected Text/Web Elements using ROBOT */
+	*//* To Paste all the Selected Text/Web Elements using ROBOT *//*
 	public void pasteAll() throws Exception
 	{
 		re = new Robot();
@@ -105,11 +105,11 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Capture Screenshot(Replaces if already exists) */
-	/*
+	*//* To Capture Screenshot(Replaces if already exists) *//*
+	*//*
 	 * Also, Make sure that the automation in running in the foreground to
 	 * capture the Image of the Browser. Else, It'll capture the open Window
-	 */
+	 *//*
 	public void robotScreenCapture(String robotImageName) throws Exception 
 	{
 		re = new Robot();
@@ -124,7 +124,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To ZoomOut */
+	*//* To ZoomOut *//*
 	public void robotZoomOut() throws Exception 
 	{
 		re = new Robot();
@@ -135,7 +135,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To ZoomIn */
+	*//* To ZoomIn *//*
 	public void robotZoomIn() throws Exception 
 	{
 		re = new Robot();
@@ -146,7 +146,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To ScrollUp using ROBOT */
+	*//* To ScrollUp using ROBOT *//*
 	public void robotScrollUp() throws Exception 
 	{
 		re = new Robot();
@@ -155,7 +155,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To ScrollDown using ROBOT */
+	*//* To ScrollDown using ROBOT *//*
 	public void robotScrollDown() throws Exception
 	{
 		re = new Robot();
@@ -164,28 +164,28 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To ScrollUp using JavaScript Executor */
+	*//* To ScrollUp using JavaScript Executor *//*
 	public void scrollUp() throws Exception 
 	{
 		((JavascriptExecutor) getWebDriver()).executeScript("scroll(0, -100);");
 	}
 
 
-	/* To ScrollDown using JavaScript Executor */
+	*//* To ScrollDown using JavaScript Executor *//*
 	public void scrollDown() throws Exception 
 	{
 		((JavascriptExecutor) getWebDriver()).executeScript("scroll(0, 100);");
 	}
 
 
-	/* To Move cursor to the Desired Location */
+	*//* To Move cursor to the Desired Location *//*
 	public void moveCursor(int X_Position, int Y_Position) throws Exception 
 	{
 		re.mouseMove(X_Position, Y_Position);
 	}
 
 
-	/* To Accept the Alert Dialog Message */
+	*//* To Accept the Alert Dialog Message *//*
 	public void alertAccept() throws Exception
 	{
 		al = getWebDriver().switchTo().alert();
@@ -193,7 +193,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Dismiss the Alert Dialog Message */
+	*//* To Dismiss the Alert Dialog Message *//*
 	public void alertDismiss() throws Exception 
 	{
 		al = getWebDriver().switchTo().alert();
@@ -201,7 +201,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Get the Alert Messages */
+	*//* To Get the Alert Messages *//*
 	public String getAlertText() throws Exception 
 	{
 		al = getWebDriver().switchTo().alert();
@@ -212,7 +212,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Upload a File using JAVA AWT ROBOT */
+	*//* To Upload a File using JAVA AWT ROBOT *//*
 	public void fileUpload(String FileToUpload) throws Exception 
 	{
 		Thread.sleep(5000);
@@ -229,7 +229,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Perform a WebAction of Mouse Over */
+	*//* To Perform a WebAction of Mouse Over *//*
 	public void mousehover(WebElement element) 
 	{
 		ac = new Actions(getWebDriver());
@@ -237,7 +237,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Perform Select Option by Visible Text */
+	*//* To Perform Select Option by Visible Text *//*
 	public void selectByVisibleText(WebElement element, String value)
 	{
 		se = new Select(element);
@@ -245,7 +245,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Perform Select Option by Index */
+	*//* To Perform Select Option by Index *//*
 	public void selectByIndex(WebElement element, int value)
 	{
 		se = new Select(element);
@@ -253,7 +253,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To Perform Select Option by Value */
+	*//* To Perform Select Option by Value *//*
 	public void selectByValue(WebElement element, String value) 
 	{
 		se = new Select(element);
@@ -261,35 +261,35 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/* To click a certain Web Element */
+	*//* To click a certain Web Element *//*
 	public void click(WebElement element) 
 	{
 		element.click();
 	}
 
 
-	/* To click a certain Web Element using DOM/ JavaScript Executor */
+	*//* To click a certain Web Element using DOM/ JavaScript Executor *//*
 	public void JSclick(WebElement element) 
 	{
 		((JavascriptExecutor) getWebDriver()).executeScript("return arguments[0].click();", element);
 	}
 
 
-	/* To Type at the specified location */
+	*//* To Type at the specified location *//*
 	public void sendKeys(WebElement element, String value) 
 	{
 		element.sendKeys(value);
 	}
 
 
-	/* To Clear the content in the input location */
+	*//* To Clear the content in the input location *//*
 	public void clear(WebElement element) 
 	{
 		element.clear();
 	}
 
 
-	/* To Drag and Drop from Source Locator to Destination Locator */
+	*//* To Drag and Drop from Source Locator to Destination Locator *//*
 	public void dragandDrop(WebElement Source, WebElement Destination)
 	{
 		ac = new Actions(getWebDriver());
@@ -297,7 +297,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Drag from the given WebElement Location and Drop at the given WebElement location */
+	*//*To Drag from the given WebElement Location and Drop at the given WebElement location *//*
 	public void dragandDropTo(WebElement Source, int XOffset, int YOffset) throws Exception 
 	{
 		ac = new Actions(getWebDriver());
@@ -305,7 +305,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Open a Page in New Tab */
+	*//*To Open a Page in New Tab *//*
 	public void rightClick(WebElement element) 
 	{
 		ac = new Actions(getWebDriver());
@@ -314,14 +314,14 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Close Current Tab */
+	*//*To Close Current Tab *//*
 	public void closeCurrentTab() 
 	{
 		getWebDriver().close();		
 	}
 
 
-	/*To Perform Click and Hold Action */
+	*//*To Perform Click and Hold Action *//*
 	public void clickAndHold(WebElement element)
 	{
 		ac = new Actions(getWebDriver());
@@ -330,7 +330,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Perform Click and Hold Action */
+	*//*To Perform Click and Hold Action *//*
 	public void doubleClick(WebElement element)
 	{
 		ac = new Actions(getWebDriver());
@@ -339,35 +339,35 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Switch To Frame By Index */
+	*//*To Switch To Frame By Index *//*
 	public void switchToFrameByIndex(int index) throws Exception
 	{
 		getWebDriver().switchTo().frame(index);
 	}
 
 
-	/*To Switch To Frame By Frame Name */
+	*//*To Switch To Frame By Frame Name *//*
 	public void switchToFrameByFrameName(String frameName) throws Exception
 	{
 		getWebDriver().switchTo().frame(frameName);
 	}
 
 
-	/*To Switch To Frame By Web Element */
+	*//*To Switch To Frame By Web Element *//*
 	public void switchToFrameByWebElement(WebElement element) throws Exception
 	{
 		getWebDriver().switchTo().frame(element);
 	}
 
 
-	/*To Switch out of a Frame */
+	*//*To Switch out of a Frame *//*
 	public void switchOutOfFrame() throws Exception
 	{
 		getWebDriver().switchTo().defaultContent();
 	}
 
 
-	/*To Get Tooltip Text */
+	*//*To Get Tooltip Text *//*
 	public String getTooltipText(WebElement element)
 	{
 		String tooltipText = element.getAttribute("title").trim();
@@ -375,7 +375,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 
 
-	/*To Close all Tabs/Windows except the First Tab */
+	*//*To Close all Tabs/Windows except the First Tab *//*
 	public void closeAllTabsExceptFirst() 
 	{
 		ArrayList<String> tabs = new ArrayList<String> (getWebDriver().getWindowHandles());
@@ -388,7 +388,7 @@ public class BaseMethod extends WebDriverFactory
 	}
 	
 	
-	/*To Print all the Windows */
+	*//*To Print all the Windows *//*
 	public void printAllTheWindows() 
 	{
 		ArrayList<String> al = new ArrayList<String>(getWebDriver().getWindowHandles());
@@ -396,5 +396,5 @@ public class BaseMethod extends WebDriverFactory
 		{
 			System.out.println(window);
 		}
-	}
+	}*/
 }

@@ -3,6 +3,7 @@
  */
 package pageObjects.pages;
 
+import controllers.WebDriverFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -19,6 +20,10 @@ import utils.RandomGenerator;
  */
 public class GoogleHomePageObjects extends PageFactoryInitializer
 {
+
+	WebDriverFactory webDriverFactory = new WebDriverFactory();
+
+
 	@FindBy(xpath="//a[text()='Gmail']")
 	private WebElement GmailLink;
 
@@ -29,11 +34,11 @@ public class GoogleHomePageObjects extends PageFactoryInitializer
 	public GoogleHomePageObjects clickonGmailLink() throws Exception
 	{
 		FluentWaiting.waitUntillElementToBeClickable(5, 500, GmailLink);
-		AllureAttachments.saveWebElement(getWebDriver(), GmailLink);
+		AllureAttachments.saveWebElement(webDriverFactory.getWebDriver(), GmailLink);
 		/*Screenshot screenshot = new AShot().takeScreenshot(getWebDriver(), GmailLink);
 		ImageIO.write(screenshot.getImage(), "PNG", new File(TestData + "div_element.png"));	*/
-		click(GmailLink);	
-		AllureAttachments.attachFileType_XLSX(ExcelFiles + "TestData.xlsx");
+		GmailLink.click();
+		//AllureAttachments.attachFileType_XLSX(ExcelFiles + "TestData.xlsx");
 		return this;		
 	}
 

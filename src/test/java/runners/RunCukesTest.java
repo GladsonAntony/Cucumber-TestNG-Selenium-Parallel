@@ -9,7 +9,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(features = "resources/features",
-glue = {"listeners.AllureListener","cucumber.examples.java.testNG.stepDefinitions"},
+glue = {/*"listeners.AllureListener",*/"cucumber.examples.java.testNG.stepDefinitions"},
 format={"pretty","html:target/html/"})
 
 public class RunCukesTest extends AbstractTestNGCucumberTests

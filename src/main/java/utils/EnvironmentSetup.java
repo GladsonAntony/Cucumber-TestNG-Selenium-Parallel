@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.util.Properties;
 
 import controllers.BaseMethod;
+import controllers.WebDriverFactory;
 
 /**
  * @Author Gladson Antony
@@ -16,6 +17,7 @@ import controllers.BaseMethod;
  */
 public class EnvironmentSetup extends BaseMethod
 {
+	static WebDriverFactory webDriverFactory = new WebDriverFactory();
 	
 	public static void environmentSetup() throws Exception
 	{
@@ -23,10 +25,10 @@ public class EnvironmentSetup extends BaseMethod
 		{
 			Properties properties = new Properties();
 			properties.setProperty("Author", "Gladson Antony");
-			properties.setProperty("Browser", Browser);
-			properties.setProperty("OS", OSName);
-			properties.setProperty("OS Architecture", OSArchitecture);
-			properties.setProperty("OS Bit", OSBit);
+			properties.setProperty("Browser", webDriverFactory.Browser);
+			properties.setProperty("OS", webDriverFactory.OSName);
+			properties.setProperty("OS Architecture", webDriverFactory.OSArchitecture);
+			properties.setProperty("OS Bit", webDriverFactory.OSBit);
 			properties.setProperty("Java Version", Runtime.class.getPackage().getImplementationVersion());
 			properties.setProperty("Host Name", InetAddress.getLocalHost().getHostName());
 			properties.setProperty("Host IP Address", InetAddress.getLocalHost().getHostAddress());

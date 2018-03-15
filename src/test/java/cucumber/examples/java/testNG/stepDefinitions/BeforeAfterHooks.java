@@ -27,7 +27,7 @@ public class BeforeAfterHooks {
      * Delete all cookies at the start of each scenario to avoid
      * shared state between tests
      */
-    @Before
+    //@Before
     public void deleteAllCookies() {
         log.info("Deleting all cookies...");
         DriverManager.getDriver().manage().deleteAllCookies();

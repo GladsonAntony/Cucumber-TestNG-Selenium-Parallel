@@ -5,24 +5,34 @@
  */
 package cucumber.examples.java.testNG.stepDefinitions;
 
+import controllers.BaseMethod;
+import controllers.WebDriverFactory;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.PageFactory;
 import pageObjects.initializePageObjects.PageFactoryInitializer;
+import pageObjects.pages.GoogleHomePageObjects;
 
-public class GoogleHomePage extends PageFactoryInitializer
+import static controllers.WebDriverFactory.getWebDriver;
+
+public class GoogleHomePage
 {
-	
+     public GoogleHomePageObjects googleHomePage()
+    {
+        return PageFactory.initElements(getWebDriver(), GoogleHomePageObjects.class);
+    }
+
 	@Given("^I'm on (.+)$")
     public void givenIAmOn(String URL) 
 	{
-        getWebDriver().get(URL);
+        //getWebDriver().get(URL);
     }
 
-    @When("^I would search for element$")
-    public void whenISearchForElement(String element_id) throws Exception 
+    @When("^I would search for element header$")
+    public void i_would_search_for_element_header() throws Exception
     {
-    	googleHomePage().verifyPageTitle();
+        googleHomePage().verifyPageTitle();
     }
 
     @Then("^I might see this element$")

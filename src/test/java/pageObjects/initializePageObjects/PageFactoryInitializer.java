@@ -14,9 +14,9 @@ import pageObjects.pages.GoogleHomePageObjects;
  * @date Sep 17, 2016
  * 
  */
-public class PageFactoryInitializer extends BaseMethod
+public class PageFactoryInitializer
 {
-	public GoogleHomePageObjects googleHomePage()
+/*	public GoogleHomePageObjects googleHomePage()
 	{
 		return PageFactory.initElements(getWebDriver(), GoogleHomePageObjects.class);
 	}
@@ -24,7 +24,7 @@ public class PageFactoryInitializer extends BaseMethod
 	public GMailPageObjects gmailPage()
 	{
 		return PageFactory.initElements(getWebDriver(), GMailPageObjects.class);
-	}
+	}*/
 	
 
 }

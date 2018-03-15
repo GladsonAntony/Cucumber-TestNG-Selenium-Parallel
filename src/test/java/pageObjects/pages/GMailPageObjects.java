@@ -3,6 +3,7 @@
  */
 package pageObjects.pages;
 
+import controllers.WebDriverFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -17,6 +18,9 @@ import ru.yandex.qatools.allure.annotations.Step;
  */
 public class GMailPageObjects extends PageFactoryInitializer
 {
+
+	WebDriverFactory webDriverFactory = new WebDriverFactory();
+
 	@FindBy(xpath="//input[@type='email']")
 	private WebElement emailIDTextBox;
 	
@@ -35,7 +39,7 @@ public class GMailPageObjects extends PageFactoryInitializer
 	@Step("Verify the Page Title of the GMail Page")
 	public GMailPageObjects verifyPageTitle() throws Exception 
 	{
-		Assert.assertEquals(getWebDriver().getTitle(), "gagagasgasg");
+		Assert.assertEquals(webDriverFactory.getWebDriver().getTitle(), "gagagasgasg");
 		return this;
 	}
 	

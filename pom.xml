@@ -319,6 +319,12 @@
 			<artifactId>phantomjsdriver</artifactId>
 			<version>${phantonjsdriver.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-cucumber-jvm</artifactId>
+			<version>2.0-BETA16</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -346,8 +352,7 @@
 					</suiteXmlFiles>
 					<argLine>
 						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-						-Dcucumber.options="--plugin
-						ru.yandex.qatools.allure.cucumberjvm.AllureReporter"
+						-Dcucumber.options="--glue steps --plugin io.qameta.allure.cucumberjvm.AllureCucumberJvm "
 					</argLine>
 					<reuseForks>false</reuseForks>
 					<argLine>-Duser.language=en</argLine>
@@ -368,41 +373,41 @@
 				</dependencies>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<id>merge-cucumber-js-reports</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-						<configuration>
-							<classpathScope>test</classpathScope>
-							<mainClass>cucumber.jvm.parallel.JSReportMerger</mainClass>
-							<arguments>
-								<argument>target/cucumber-report/</argument>
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>merge-cucumber-json-reports</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-						<configuration>
-							<classpathScope>test</classpathScope>
-							<mainClass>cucumber.jvm.parallel.JSONReportMerger</mainClass>
-							<arguments>
-								<argument>target/cucumber-report/</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.codehaus.mojo</groupId>-->
+				<!--<artifactId>exec-maven-plugin</artifactId>-->
+				<!--<version>1.6.0</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>merge-cucumber-js-reports</id>-->
+						<!--<phase>post-integration-test</phase>-->
+						<!--<goals>-->
+							<!--<goal>java</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<classpathScope>test</classpathScope>-->
+							<!--<mainClass>cucumber.jvm.parallel.JSReportMerger</mainClass>-->
+							<!--<arguments>-->
+								<!--<argument>target/cucumber-report/</argument>-->
+							<!--</arguments>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+					<!--<execution>-->
+						<!--<id>merge-cucumber-json-reports</id>-->
+						<!--<phase>post-integration-test</phase>-->
+						<!--<goals>-->
+							<!--<goal>java</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<classpathScope>test</classpathScope>-->
+							<!--<mainClass>cucumber.jvm.parallel.JSONReportMerger</mainClass>-->
+							<!--<arguments>-->
+								<!--<argument>target/cucumber-report/</argument>-->
+							<!--</arguments>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 		</plugins>
 	</build>
 

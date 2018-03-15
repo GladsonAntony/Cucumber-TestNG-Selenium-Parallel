@@ -87,7 +87,7 @@ public class WebDriverFactory extends BrowserFactory
 	public void afterMethod() throws Exception
 	{
 		Thread.sleep(2000);
-		getWebDriver().quit();	
+		getWebDriver().quit();
 	}
 
 	public static void embedScreenshot(Scenario scenario)

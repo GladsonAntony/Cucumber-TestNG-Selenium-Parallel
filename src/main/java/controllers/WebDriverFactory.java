@@ -3,10 +3,10 @@
  */
 package controllers;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -16,6 +16,7 @@ import io.github.bonigarcia.wdm.EdgeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.github.bonigarcia.wdm.PhantomJsDriverManager;
+import utils.AllureAttachments;
 
 /**
  * @Author Gladson Antony
@@ -33,6 +34,7 @@ public class WebDriverFactory extends BrowserFactory
 	{
 		System.out.println("Browser: "+Browser);
 		System.out.println("WebsiteURL: "+WebsiteURL);
+
 		switch(Browser.toLowerCase())
 		{
 		case "chrome":
@@ -86,5 +88,21 @@ public class WebDriverFactory extends BrowserFactory
 	{
 		Thread.sleep(2000);
 		getWebDriver().quit();	
+	}
+
+	public static void embedScreenshot(Scenario scenario)
+	{
+		if ( scenario.isFailed() )
+		{
+			scenario.write("Current Page URL is: " + getWebDriver().getCurrentUrl());
+			try
+			{
+				byte[] screenshot = ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+				AllureAttachments.saveFullPageScreenshot(scenario.getName(),getWebDriver());
+			}
+			catch (WebDriverException somePlatformsDontSupportScreenshots)
+			{	}
+		}
 	}
 }

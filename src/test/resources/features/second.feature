@@ -15,6 +15,6 @@ Feature: this is the second feature name
     Then I should see this element
 
   Examples:
-    | URL                                               | element_id   |
-    | https://github.com/cucumber/cucumber/wiki/Gherkin | wiki-wrapper |
-    | http://testng.org/doc/index.html                  | topmenu      |
+| URL                                               | element_id   |
+| https://github.com/cucumber/cucumber/wiki/Gherkin | wiki-wrapper |
+| http://testng.org/doc/index.html                  | topmenu      |

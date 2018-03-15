@@ -10,7 +10,10 @@ import org.openqa.selenium.support.FindBy;
 import pageObjects.initializePageObjects.PageFactoryInitializer;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.AllureAttachments;
+import utils.ExplicitWaiting;
 import utils.RandomGenerator;
+
+import static controllers.WebDriverFactory.getWebDriver;
 
 /**
  * @author ${Gladson Antony}
@@ -19,10 +22,6 @@ import utils.RandomGenerator;
  */
 public class GoogleHomePageObjects extends PageFactoryInitializer
 {
-
-	WebDriverFactory webDriverFactory = new WebDriverFactory();
-
-
 	@FindBy(xpath="//a[text()='Gmail']")
 	private WebElement GmailLink;
 
@@ -32,8 +31,8 @@ public class GoogleHomePageObjects extends PageFactoryInitializer
 	@Step("Click On Gmail Link in the Google Home Page")
 	public GoogleHomePageObjects clickonGmailLink() throws Exception
 	{
-		FluentWaiting.waitUntillElementToBeClickable(5, 500, GmailLink);
-		AllureAttachments.saveWebElement(webDriverFactory.getWebDriver(), GmailLink);
+		ExplicitWaiting.explicitWaitElementToBeClickable(GmailLink,10);
+		AllureAttachments.saveWebElement(getWebDriver(), GmailLink);
 		/*Screenshot screenshot = new AShot().takeScreenshot(getWebDriver(), GmailLink);
 		ImageIO.write(screenshot.getImage(), "PNG", new File(TestData + "div_element.png"));	*/
 		GmailLink.click();
@@ -51,7 +50,7 @@ public class GoogleHomePageObjects extends PageFactoryInitializer
 	@Step("Verify the Page Title of the Google Home Page")
 	public GoogleHomePageObjects verifyPageTitle() throws Exception 
 	{
-		FluentWaiting.waitForTitleToBe(5, 500, "Google");
+		ExplicitWaiting.explicitWaitTitleIs(10,"Google");
 		return this;
 	}
 

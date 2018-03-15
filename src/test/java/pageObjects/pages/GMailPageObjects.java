@@ -10,6 +10,9 @@ import org.testng.Assert;
 
 import pageObjects.initializePageObjects.PageFactoryInitializer;
 import ru.yandex.qatools.allure.annotations.Step;
+import utils.ExplicitWaiting;
+
+import static controllers.WebDriverFactory.getWebDriver;
 
 /**
  * @author Gladson Antony
@@ -18,9 +21,6 @@ import ru.yandex.qatools.allure.annotations.Step;
  */
 public class GMailPageObjects extends PageFactoryInitializer
 {
-
-	WebDriverFactory webDriverFactory = new WebDriverFactory();
-
 	@FindBy(xpath="//input[@type='email']")
 	private WebElement emailIDTextBox;
 	
@@ -30,7 +30,7 @@ public class GMailPageObjects extends PageFactoryInitializer
 	@Step("To Enter Email ID and Click Next Button")
 	public GMailPageObjects enterEmailID(String emailID) 
 	{
-		utils.FluentWaiting.waitUntillElementToBeClickable(30, 500, emailIDTextBox);
+		ExplicitWaiting.explicitWaitElementToBeClickable(emailIDTextBox,10);
 		emailIDTextBox.sendKeys(emailID);	
 		nextButton.click();
 		return this;
@@ -39,7 +39,7 @@ public class GMailPageObjects extends PageFactoryInitializer
 	@Step("Verify the Page Title of the GMail Page")
 	public GMailPageObjects verifyPageTitle() throws Exception 
 	{
-		Assert.assertEquals(webDriverFactory.getWebDriver().getTitle(), "gagagasgasg");
+		Assert.assertEquals(getWebDriver().getTitle(), "gagagasgasg");
 		return this;
 	}
 	

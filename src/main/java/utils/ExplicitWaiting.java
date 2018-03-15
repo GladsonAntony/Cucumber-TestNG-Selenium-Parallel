@@ -45,7 +45,7 @@ public class ExplicitWaiting
 	
 	
 	/** To Wait Until Title contains the text */
-	public static void explicitWaitTitleContains(WebElement element, int time, String title)
+	public static void explicitWaitTitleContains(int time, String title)
 	{
 		WebDriverWait titleContains = new WebDriverWait(getWebDriver(), time);
 		titleContains.until(ExpectedConditions.titleContains(title));
@@ -53,7 +53,7 @@ public class ExplicitWaiting
 	
 	
 	/** To Wait Until Title is */
-	public static void explicitWaitTitleIs(WebElement element, int time, String title)
+	public static void explicitWaitTitleIs(int time, String title)
 	{
 		WebDriverWait titleIs = new WebDriverWait(getWebDriver(), time);
 		titleIs.until(ExpectedConditions.titleIs(title));

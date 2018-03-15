@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import pageObjects.initializePageObjects.PageFactoryInitializer;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.AllureAttachments;
-import utils.FluentWaiting;
 import utils.RandomGenerator;
 
 /**

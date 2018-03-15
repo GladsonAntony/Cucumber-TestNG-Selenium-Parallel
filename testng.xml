@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="run tests in parallel" parallel="tests" verbose="1" configfailurepolicy="continue" thread-count="2">
-    <listeners>
-        <listener class-name="listeners.AllureListener"></listener>
-    </listeners>
-    <test name="Tests in FF">
-        <parameter name="browserName" value="firefox" />
-        <!-- If you want to be more specific, replace this with a list of test classes you'd like to run -->
-        <classes>
-            <class name="RunCukesTest" />
-        </classes>
-    </test>
-</suite>
+<suite thread-count="2" name="Suite" parallel="methods">
+	<listeners>
+		<listener class-name="com.gladson.bdd.main.listeners.AllureListener"></listener>
+	</listeners>
+	<test thread-count="2" name="Test" parallel="methods">
+
+		<classes>
+			<class name="com.gladson.bdd.main.controllers.WebDriverFactory" />
+			<class name="com.gladson.bdd.tests.runners.RunCukesTest.java" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

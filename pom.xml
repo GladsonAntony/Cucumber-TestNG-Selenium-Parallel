@@ -4,7 +4,7 @@
 	<groupId>com.gladson</groupId>
 	<artifactId>SeleniumCucumberTestNG</artifactId>
 	<packaging>jar</packaging>
-	<name>Example Java TestNG Cucumber parallel test executor</name>
+	<name>SeleniumCucumberTestNG</name>
 	<version>1.0</version>
 
 	<properties>
@@ -12,17 +12,18 @@
 		<compiler.version>1.8</compiler.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<testng.version>6.14.2</testng.version>
+		<testng.version>6.11</testng.version>
 		<aspectj.version>1.8.13</aspectj.version>
 		<slf4j.version>1.7.24</slf4j.version>
-		<allure.version>1.5.4</allure.version>
+		<allure.version>2.6.0</allure.version>
 		<apachepoi.version>3.13</apachepoi.version>
 		<hamcrest.version>1.3</hamcrest.version>
-		<surefire.fork.count>2</surefire.fork.count>
+		<!-- <surefire.fork.count>2</surefire.fork.count> -->
 		<selenium.version>3.11.0</selenium.version>
 		<cucumber.version>2.4.0</cucumber.version>
 		<webdrivermanager.version>2.1.0</webdrivermanager.version>
 		<phantonjsdriver.version>1.4.4</phantonjsdriver.version>
+		<maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -112,11 +113,8 @@
 
 
 		<!-- Allure Java Annotations Dependency -->
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-java-annotations</artifactId>
-			<version>${allure.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>ru.yandex.qatools.allure</groupId> <artifactId>allure-java-annotations</artifactId> 
+			<version>${allure.version}</version> </dependency> -->
 
 
 		<!-- Allure Java Properties Dependency -->
@@ -128,16 +126,30 @@
 
 
 		<!-- Allure TestNG Adapter -->
+		<!-- <dependency> <groupId>ru.yandex.qatools.allure</groupId> <artifactId>allure-testng-adaptor</artifactId> 
+			<version>${allure.version}</version> <exclusions> <exclusion> <groupId>junit</groupId> 
+			<artifactId>junit</artifactId> </exclusion> </exclusions> </dependency> -->
+
+		<!-- Allure Attachment Adapter -->
 		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-testng-adaptor</artifactId>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-attachments</artifactId>
 			<version>${allure.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+
+		<!-- Allure TestNG Adapter -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+
+		<!-- Allure Cucumber 2 Maven Dependency -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-cucumber2-jvm</artifactId>
+			<version>${allure.version}</version>
 		</dependency>
 
 
@@ -274,11 +286,8 @@
 
 
 		<!-- Allure Cucumber-JVM Adapter -->
-		<dependency>
-			<groupId>ru.yandex.qatools.allure</groupId>
-			<artifactId>allure-cucumber-jvm-adaptor</artifactId>
-			<version>1.6.4</version>
-		</dependency>
+		<!-- <dependency> <groupId>ru.yandex.qatools.allure</groupId> <artifactId>allure-cucumber-jvm-adaptor</artifactId> 
+			<version>1.6.4</version> </dependency> -->
 
 
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
@@ -319,16 +328,23 @@
 			<artifactId>phantomjsdriver</artifactId>
 			<version>${phantonjsdriver.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-cucumber-jvm</artifactId>
-			<version>2.0-BETA16</version>
-		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse-plugin.version}</version>
+				<configuration>
+					<buildOutputDirectory>/target/build/classes</buildOutputDirectory>
+					<downloadJavadocs>true</downloadJavadocs>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+
+
 			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -339,6 +355,26 @@
 					<source>${compiler.version}</source>
 					<target>${compiler.version}</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/*</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- Maven Surefire Plugin -->
@@ -352,16 +388,7 @@
 					</suiteXmlFiles>
 					<argLine>
 						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-						-Dcucumber.options="--glue steps --plugin io.qameta.allure.cucumberjvm.AllureCucumberJvm "
 					</argLine>
-					<reuseForks>false</reuseForks>
-					<argLine>-Duser.language=en</argLine>
-					<argLine>-Xmx1024m</argLine>
-					<argLine>-XX:MaxPermSize=256m</argLine>
-					<argLine>-Dfile.encoding=UTF-8</argLine>
-					<useFile>false</useFile>
-					<!-- Remember to set the testFailureIgnore set to true if you want to 
-						run cucumber.jvm.parallel.JSReportMergerer even if some of the tests failed. -->
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 				<dependencies>
@@ -373,41 +400,43 @@
 				</dependencies>
 			</plugin>
 
-			<!--<plugin>-->
-				<!--<groupId>org.codehaus.mojo</groupId>-->
-				<!--<artifactId>exec-maven-plugin</artifactId>-->
-				<!--<version>1.6.0</version>-->
-				<!--<executions>-->
-					<!--<execution>-->
-						<!--<id>merge-cucumber-js-reports</id>-->
-						<!--<phase>post-integration-test</phase>-->
-						<!--<goals>-->
-							<!--<goal>java</goal>-->
-						<!--</goals>-->
-						<!--<configuration>-->
-							<!--<classpathScope>test</classpathScope>-->
-							<!--<mainClass>cucumber.jvm.parallel.JSReportMerger</mainClass>-->
-							<!--<arguments>-->
-								<!--<argument>target/cucumber-report/</argument>-->
-							<!--</arguments>-->
-						<!--</configuration>-->
-					<!--</execution>-->
-					<!--<execution>-->
-						<!--<id>merge-cucumber-json-reports</id>-->
-						<!--<phase>post-integration-test</phase>-->
-						<!--<goals>-->
-							<!--<goal>java</goal>-->
-						<!--</goals>-->
-						<!--<configuration>-->
-							<!--<classpathScope>test</classpathScope>-->
-							<!--<mainClass>cucumber.jvm.parallel.JSONReportMerger</mainClass>-->
-							<!--<arguments>-->
-								<!--<argument>target/cucumber-report/</argument>-->
-							<!--</arguments>-->
-						<!--</configuration>-->
-					<!--</execution>-->
-				<!--</executions>-->
-			<!--</plugin>-->
+			<!-- -Dcucumber.options=" --> <!-- glue steps --> <!-- plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm" -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.21.0</version>
+				<configuration>
+					<argLine> -noverify
+						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${version.aspectj}/aspectjweaver-${version.aspectj}.jar
+					</argLine>
+					<!-- properties><property><name>listener</name> com.tesco.plm.bdd.support.ScreenshotTakingTestListener 
+						<value>ru.yandex.qatools.allure.junit.AllureRunListener</value></property></properties -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
 		</plugins>
 	</build>
 
@@ -415,11 +444,9 @@
 		<excludeDefaults>true</excludeDefaults>
 		<plugins>
 			<plugin>
-				<groupId>ru.yandex.qatools.allure</groupId>
-				<artifactId>allure-maven-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-				</configuration>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>2.9</version>
 			</plugin>
 		</plugins>
 	</reporting>

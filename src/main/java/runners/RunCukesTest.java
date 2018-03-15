@@ -9,11 +9,13 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
-        features={"features"},
-        glue={"steps"},
+        features={"classpath:features"},
+        glue={"classpath:steps"},
         format={"pretty","html:target/html/"},
         plugin = {"pretty", "json:target/Cucumber.json",
-                "html:target/cucumber-html-report"})
+                "html:target/cucumber-html-report"},
+        dryRun=true,
+        monochrome=true)
 
 public class RunCukesTest extends AbstractTestNGCucumberTests
 {

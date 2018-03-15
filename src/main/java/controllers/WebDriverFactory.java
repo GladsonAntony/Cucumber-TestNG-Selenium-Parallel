@@ -3,6 +3,7 @@
  */
 package controllers;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +43,7 @@ public class WebDriverFactory extends BrowserFactory
 			break;
 
 		case  "firefox":
+		case  "firefox_headless":
 			FirefoxDriverManager.getInstance().setup();
 			break;
 
@@ -91,7 +93,8 @@ public class WebDriverFactory extends BrowserFactory
 		return wd.get();
 	}
 
-	@AfterMethod(alwaysRun=true,enabled=true)
+	@After
+	//@AfterMethod(alwaysRun=true,enabled=true)
 	public void afterMethod() throws Exception
 	{
 		Thread.sleep(2000);

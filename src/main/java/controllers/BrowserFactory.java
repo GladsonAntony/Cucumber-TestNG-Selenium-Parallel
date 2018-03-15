@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -45,6 +46,12 @@ public class BrowserFactory extends InitMethod
 
 		case  "firefox":
 			driver = new FirefoxDriver();
+			break;
+
+		case  "firefox_headless":
+			FirefoxOptions options = new FirefoxOptions();
+			options.setHeadless(true);
+			driver = new FirefoxDriver(options);
 			break;
 
 		case  "ie":

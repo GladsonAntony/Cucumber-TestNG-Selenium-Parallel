@@ -29,7 +29,6 @@ public class WebDriverFactory extends BrowserFactory
 
 
 	@Before
-	//@BeforeTest(alwaysRun=true)
 	public void suiteSetup() throws Exception
 	{
 		System.out.println("Browser: "+Browser);
@@ -72,17 +71,6 @@ public class WebDriverFactory extends BrowserFactory
 		setWebDriver(driver);
 	}
 
-	@BeforeMethod
-	public void beforeMethod() throws Exception
-	{
-		System.out.println("Browser: "+Browser);
-		System.out.println("WebsiteURL: "+WebsiteURL);
-		new WebDriverFactory();
-		WebDriver driver = WebDriverFactory.createDriver();
-		setWebDriver(driver);
-	}
-	
-	
 	public static void setWebDriver(WebDriver driver)
 	{
 		wd.set(driver);
@@ -94,7 +82,6 @@ public class WebDriverFactory extends BrowserFactory
 	}
 
 	@After
-	//@AfterMethod(alwaysRun=true,enabled=true)
 	public void afterMethod() throws Exception
 	{
 		Thread.sleep(2000);

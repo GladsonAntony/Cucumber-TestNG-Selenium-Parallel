@@ -51,5 +51,4 @@ public class InitMethod
 	public static SoftAssert softAssert;
 	public static ITestResult result;
 	public static URI uri;
-	
 }

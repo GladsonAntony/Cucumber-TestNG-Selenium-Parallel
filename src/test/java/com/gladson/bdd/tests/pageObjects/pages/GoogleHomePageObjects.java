@@ -14,6 +14,7 @@ import com.gladson.bdd.main.utils.AllureAttachments;
 import com.gladson.bdd.main.utils.ExplicitWaiting;
 import com.gladson.bdd.main.utils.RandomGenerator;
 import com.gladson.bdd.tests.pageObjects.initializePageObjects.PageFactoryInitializer;
+import org.testng.Assert;
 
 /**
  * @author ${Gladson Antony}
@@ -50,7 +51,7 @@ public class GoogleHomePageObjects extends PageFactoryInitializer
 	@Step("Verify the Page Title of the Google Home Page")
 	public GoogleHomePageObjects verifyPageTitle() throws Exception 
 	{
-		ExplicitWaiting.explicitWaitTitleIs(10,"Google");
+		Assert.assertEquals(getWebDriver().getTitle(),"Googleqwewe");
 		return this;
 	}
 

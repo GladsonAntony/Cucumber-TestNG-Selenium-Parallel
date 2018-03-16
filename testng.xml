@@ -5,10 +5,8 @@
 	</listeners>
 	<test name="Package with subpackages">
 		<classes>
-			<classes>
 				<class name="com.gladson.bdd.main.controllers.WebDriverFactory" />
-				<class name="com.gladson.bdd.tests.runners.RunCukesTest.java" />
-			</classes>
+				<class name="com.gladson.bdd.tests.runners.RunCukesTest" />
 		</classes>
 	</test>
 </suite>

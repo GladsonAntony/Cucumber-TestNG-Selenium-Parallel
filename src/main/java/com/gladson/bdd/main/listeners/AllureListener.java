@@ -2,6 +2,12 @@ package com.gladson.bdd.main.listeners;
 
 import static com.gladson.bdd.main.controllers.WebDriverFactory.getWebDriver;
 
+import com.sun.net.httpserver.Authenticator;
+import cucumber.api.Result;
+import cucumber.api.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -12,10 +18,10 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.gladson.bdd.main.controllers.BaseMethod;
 import com.gladson.bdd.main.utils.AllureAttachments;
 
-
+import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -23,7 +29,7 @@ import com.gladson.bdd.main.utils.AllureAttachments;
  * @Date 25-Dec-2016
  */
 
-public class AllureListener extends BaseMethod implements ITestListener, ISuiteListener, IInvokedMethodListener 
+public class AllureListener implements ITestListener, ISuiteListener, IInvokedMethodListener
 {
 	/*This belongs to ISuiteListener and will execute before the Suite Starts*/
 	@Override
@@ -115,7 +121,7 @@ public class AllureListener extends BaseMethod implements ITestListener, ISuiteL
 
 
 	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult result) 
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result)
 	{ }
 
 }

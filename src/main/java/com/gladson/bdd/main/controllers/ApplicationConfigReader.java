@@ -52,7 +52,5 @@ public class ApplicationConfigReader
 	public String getVideoFeature() {
 		return VideoFeature;
 	}
-	
-	
 
 }

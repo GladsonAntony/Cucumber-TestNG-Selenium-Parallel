@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Suite" parallel="methods">
+<suite name="Test runner">
 	<listeners>
 		<listener class-name="com.gladson.bdd.main.listeners.AllureListener"></listener>
 	</listeners>
-	<test thread-count="2" name="Test" parallel="methods">
-
+	<test name="Package with subpackages">
 		<classes>
-			<class name="com.gladson.bdd.main.controllers.WebDriverFactory" />
-			<class name="com.gladson.bdd.tests.runners.RunCukesTest.java" />
+			<classes>
+				<class name="com.gladson.bdd.main.controllers.WebDriverFactory" />
+				<class name="com.gladson.bdd.tests.runners.RunCukesTest.java" />
+			</classes>
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+</suite>

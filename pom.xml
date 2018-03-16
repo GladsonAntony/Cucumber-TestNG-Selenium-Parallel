@@ -381,11 +381,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20</version>
+				<version>2.18</version>
 				<configuration>
-					<suiteXmlFiles>
+					<!-- <suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
+					</suiteXmlFiles> -->
 					<argLine>
 						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
 					</argLine>
@@ -399,6 +399,8 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			
+			
 
 			<!-- -Dcucumber.options=" --> <!-- glue steps --> <!-- plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm" -->
 
@@ -410,7 +412,7 @@
 					<argLine> -noverify
 						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${version.aspectj}/aspectjweaver-${version.aspectj}.jar
 					</argLine>
-					<!-- properties><property><name>listener</name> com.tesco.plm.bdd.support.ScreenshotTakingTestListener 
+<!-- 					properties><property><name>listener</name> com.tesco.plm.bdd.support.ScreenshotTakingTestListener 
 						<value>ru.yandex.qatools.allure.junit.AllureRunListener</value></property></properties -->
 				</configuration>
 				<executions>

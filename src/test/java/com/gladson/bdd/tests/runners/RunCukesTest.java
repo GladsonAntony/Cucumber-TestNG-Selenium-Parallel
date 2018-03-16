@@ -8,10 +8,11 @@ package com.gladson.bdd.tests.runners;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@CucumberOptions(features = { "src/test/resources/features/" }, glue = { "classpath:steps", "listeners.AllureListener",
-		"controllers.WebDriverFactory.java" }, format = { "pretty", "html:target/html/" }, plugin = { "pretty",
-				"json:target/Cucumber.json", "html:target/cucumber-html-report",
-				"io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm" }, dryRun = true, monochrome = true)
+@CucumberOptions(features = { "src/test/resources/features/" }, glue = { "com.gladson.bdd.tests.steps", "listeners.AllureListener",
+		"controllers.WebDriverFactory.java" })
+		// , format = { "pretty", "html:target/html/" }, plugin = { "pretty",
+		// 		"json:target/Cucumber.json", "html:target/cucumber-html-report",
+		// 		"io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm" }, dryRun = true, monochrome = true)
 public class RunCukesTest extends AbstractTestNGCucumberTests {
 
 }

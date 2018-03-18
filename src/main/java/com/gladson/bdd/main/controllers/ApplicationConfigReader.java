@@ -21,6 +21,9 @@ public class ApplicationConfigReader
 	@Property(value = "Browser")
 	private String Browser;
 	
+	@Property(value = "BrowserBinary")
+	private String Browser_Binary;
+	
 	@Property(value="Url")
 	private String WebsiteUrl;
 	
@@ -35,6 +38,10 @@ public class ApplicationConfigReader
 
 	public String getBrowser() {
 		return Browser;
+	}
+	
+	public String getBrowser_Binary() {
+		return Browser_Binary;
 	}
 
 	public String getWebsiteUrl() {

@@ -23,6 +23,7 @@ public class InitMethod
 	
 	public static String WebsiteURL = appConfig.getWebsiteUrl();
 	public static String Browser = appConfig.getBrowser();
+	public static String BrowserBinary = appConfig.getBrowser_Binary();
 	public static int MaxPageLoadTime = appConfig.getMaxPageLoadTime();
 	public static int ImplicitlyWait = appConfig.getImplicitlyWait();
 	public static String VideoFeature = appConfig.getVideoFeature();

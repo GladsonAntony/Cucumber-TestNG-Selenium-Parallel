@@ -1,14 +1,14 @@
 package com.gladson.bdd.tests.steps;
 
-import com.gladson.bdd.main.controllers.WebDriverFactory;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import static com.gladson.bdd.main.controllers.WebDriverFactory.getWebDriver;
+
 import org.openqa.selenium.support.PageFactory;
 
 import com.gladson.bdd.tests.pageObjects.pages.GoogleHomePageObjects;
 
-import static com.gladson.bdd.main.controllers.WebDriverFactory.getWebDriver;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class GoogleTestStep
 {

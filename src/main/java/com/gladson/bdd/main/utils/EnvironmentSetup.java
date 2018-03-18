@@ -6,7 +6,6 @@ import java.net.InetAddress;
 import java.util.Properties;
 
 import com.gladson.bdd.main.controllers.InitMethod;
-import com.gladson.bdd.main.controllers.WebDriverFactory;
 
 /**
  * @Author Gladson Antony

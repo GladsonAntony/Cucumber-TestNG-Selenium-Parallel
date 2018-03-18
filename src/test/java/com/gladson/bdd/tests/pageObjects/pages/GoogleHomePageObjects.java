@@ -7,21 +7,20 @@ import static com.gladson.bdd.main.controllers.WebDriverFactory.getWebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import com.gladson.bdd.main.utils.AllureAttachments;
 import com.gladson.bdd.main.utils.ExplicitWaiting;
 import com.gladson.bdd.main.utils.RandomGenerator;
-import com.gladson.bdd.tests.pageObjects.initializePageObjects.PageFactoryInitializer;
-import org.testng.Assert;
+
+import io.qameta.allure.Step;
 
 /**
  * @author ${Gladson Antony}
  * @date Sep 17, 2016
  * 
  */
-public class GoogleHomePageObjects extends PageFactoryInitializer
+public class GoogleHomePageObjects
 {
 	@FindBy(xpath="//a[text()='Gmail']")
 	private WebElement GmailLink;

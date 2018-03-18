@@ -3,27 +3,26 @@
  */
 package com.gladson.bdd.main.controllers;
 
-import com.gladson.bdd.main.utils.DateAndTime;
-import com.gladson.bdd.main.utils.EnvironmentSetup;
-import cucumber.api.Result;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.EdgeDriverManager;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
-import io.github.bonigarcia.wdm.PhantomJsDriverManager;
-import com.gladson.bdd.main.utils.AllureAttachments;
-import org.openqa.selenium.Rectangle;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -31,6 +30,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
@@ -40,15 +41,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.gladson.bdd.main.utils.AllureAttachments;
+import com.gladson.bdd.main.utils.DateAndTime;
+import com.gladson.bdd.main.utils.EnvironmentSetup;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.EdgeDriverManager;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
+import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+import io.github.bonigarcia.wdm.OperaDriverManager;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 
 /**
  * @Author Gladson Antony
@@ -83,12 +87,10 @@ public class WebDriverFactory extends InitMethod
 			break;
 
 		case "opera":
-			ChromeDriverManager.getInstance().setup();
-			capabilities = DesiredCapabilities.opera();
-			ChromeOptions optionsOpera = new ChromeOptions();
-			optionsOpera.setBinary("C:/Program Files/Opera/launcher.exe");
-			capabilities.setCapability(ChromeOptions.CAPABILITY, optionsOpera);
-			driver = new ChromeDriver(capabilities);
+			OperaDriverManager.getInstance().version("2.33").setup();
+			OperaOptions operaOptions = new OperaOptions();
+			operaOptions.setBinary(BrowserBinary);
+	        driver = new OperaDriver(operaOptions);
 			break;
 
 		case  "firefox":

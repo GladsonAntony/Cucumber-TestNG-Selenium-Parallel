@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import com.gladson.bdd.main.utils.ExplicitWaiting;
-import com.gladson.bdd.tests.pageObjects.initializePageObjects.PageFactoryInitializer;
 
 import io.qameta.allure.Step;
 
@@ -19,7 +18,7 @@ import io.qameta.allure.Step;
  * @date Sep 17, 2016
  * 
  */
-public class GMailPageObjects extends PageFactoryInitializer
+public class GMailPageObjects
 {
 	@FindBy(xpath="//input[@type='email']")
 	private WebElement emailIDTextBox;

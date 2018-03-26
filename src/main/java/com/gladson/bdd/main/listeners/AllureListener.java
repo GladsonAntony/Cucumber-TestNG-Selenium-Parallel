@@ -2,12 +2,6 @@ package com.gladson.bdd.main.listeners;
 
 import static com.gladson.bdd.main.controllers.WebDriverFactory.getWebDriver;
 
-import com.sun.net.httpserver.Authenticator;
-import cucumber.api.Result;
-import cucumber.api.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriverException;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -19,9 +13,6 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import com.gladson.bdd.main.utils.AllureAttachments;
-
-import java.util.Collection;
-import java.util.List;
 
 
 /**
